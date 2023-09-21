@@ -16,7 +16,7 @@
 ### Association
 - has_many :items
 - has_many :comments
-- has_one :order
+- has_many :orders
 
 
 ## items テーブル
@@ -52,7 +52,7 @@
 
 ### Association
 - belongs_to :user
-- has_many :items
+- belongs_to :items
 
 
 ## orders テーブル
@@ -61,6 +61,7 @@
 | ------------------- | ---------- | ------------------------------ |
 | user                | references | null: false, foreign_key: true |
 | item                | references | null: false, foreign_key: true |
+| adresse             | references | null: false, foreign_key: true |
 
 ### Association
 - has_one :user
@@ -71,12 +72,13 @@
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| shipping_source_id  | references | null: false, foreign_key: true |
-| shipping_address_id | references | null: false, foreign_key: true |
-| order_id            | references | null: false, foreign_key: true |
-| zip_code            | integer    | null: false, foreign_key: true |
-| tel                 | integer    | null: false, foreign_key: true |
+| user                | references | null: false, foreign_key: true |
+| zip_code            | string     | null: false                    |
+| prefecture          | integer    | null: false, foreign_key: true |
+| city                | string     | null: false                    |
+| street              | string     | null: false                    |
+| building            | string     |                                |
+| tel                 | string     | null: false                    |
 
 ### Association
-- has_one :user
-- has_one :item
+- belongs_to:user

@@ -29,8 +29,8 @@
 | user                | references | null: false, foreign_key: true |
 | category_id         | integer    | null: false                    |
 | item_condition_id   | integer    | null: false                    |
-| bdelivery_charge_id | integer    | null: false                    |
-| shipping_source_id  | integer    | null: false                    |
+| delivery_charge_id  | integer    | null: false                    |
+| prefecture_id       | integer    | null: false                    |
 | delivery_date_id    | integer    | null: false                    |
 
 ### Association
@@ -61,18 +61,18 @@
 | ------------------- | ---------- | ------------------------------ |
 | user                | references | null: false, foreign_key: true |
 | item                | references | null: false, foreign_key: true |
-| adresse             | references | null: false, foreign_key: true |
 
 ### Association
 - has_one :user
 - has_one :item
+- has_one :address
 
 
-## adresses テーブル
+## address テーブル
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| user                | references | null: false, foreign_key: true |
+| order               | references | null: false, foreign_key: true |
 | zip_code            | string     | null: false                    |
 | prefecture          | integer    | null: false, foreign_key: true |
 | city                | string     | null: false                    |
@@ -81,4 +81,4 @@
 | tel                 | string     | null: false                    |
 
 ### Association
-- belongs_to:user
+- belongs_to:order

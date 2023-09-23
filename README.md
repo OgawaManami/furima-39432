@@ -51,7 +51,7 @@
 
 ### Association
 - belongs_to :user
-- belongs_to :items
+- belongs_to :item
 
 
 ## orders テーブル

@@ -38,7 +38,6 @@
 - belongs_to :category
 - has_many :comments
 - has_one :shipping
-- has_many :item_images
 - has_one :order
 
 
@@ -63,8 +62,8 @@
 | item                | references | null: false, foreign_key: true |
 
 ### Association
-- has_one :user
-- has_one :item
+- belongs_to :user
+- belongs_to :item
 - has_one :address
 
 
@@ -74,7 +73,7 @@
 | ------------------- | ---------- | ------------------------------ |
 | order               | references | null: false, foreign_key: true |
 | zip_code            | string     | null: false                    |
-| prefecture          | integer    | null: false, foreign_key: true |
+| prefecture_id       | integer    | null: false                    |
 | city                | string     | null: false                    |
 | street              | string     | null: false                    |
 | building            | string     |                                |

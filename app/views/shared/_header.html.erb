@@ -17,8 +17,8 @@
     <ul class='lists-right'>
     <% if user_signed_in? %>
       <div class="nav__right">
-      <%= link_to current_user.nickname, destroy_user_session_path, class: "user-nickname" %>
-      <%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "logout" %>
+      <%= link_to current_user.nickname, user_path(current_user.id), class: "user-nickname" %>
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %>
       </div>
     <% else %>
       <div class="nav__right">

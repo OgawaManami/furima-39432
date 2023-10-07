@@ -42,4 +42,3 @@ class Item < ApplicationRecord
       #validates :shipping_date_id
     #end
   end
-end

@@ -7,6 +7,7 @@ class Item < ApplicationRecord
     has_many :comments
     has_one :shipping
     has_one :order
+    has_one_attached :image
   
     # アクティブハッシュとのアソシエーション
     #belongs_to :category

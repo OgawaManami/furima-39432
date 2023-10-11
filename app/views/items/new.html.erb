@@ -5,11 +5,9 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with local: true do |f| %>
+    <%= form_with model: @item, local: true do |f| %>
 
-    <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-    <%# render 'shared/error_messages', model: f.object %>
-    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+    <%= render 'shared/error_messages', model: f.object %>
 
     <%# 商品画像 %>
     <div class="img-upload">
@@ -25,6 +23,7 @@
       </div>
     </div>
     <%# /商品画像 %>
+
     <%# 商品名と商品説明 %>
     <div class="new-items">
       <div class="weight-bold-text">
@@ -56,7 +55,6 @@
           <span class="indispensable">必須</span>
         </div>
         <%= f.collection_select(:item_condition_id, ItemCondition.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
-      </div>
       </div>
     </div>
     <%# /商品の詳細 %>
@@ -143,9 +141,9 @@
       <%=link_to 'もどる', root_path, class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
+    <% end %>
   </div>
-  <% end %>
-
+  
   <footer class="items-sell-footer">
     <ul class="menu">
       <li><a href="#">プライバシーポリシー</a></li>

@@ -1,14 +1,14 @@
 class ItemsController < ApplicationController
   # ログインしていないユーザーはログインページに促す
   before_action :authenticate_user!, except: [:index, :show]
-
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
   end
 
   def new
-    @items = Item.new
+    @item = Item.new
   end
 
   def create
@@ -20,13 +20,38 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def edit
+  end
+
+  def update
+    @item.update(item_params)
+    if @item.valid?
+      redirect_to item_path(item_params)
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      redirect_to root_path
+    end
+  end
 
   private
 
   def item_params
-    params.require(:item).permit(:image, :name, :item_text, :category_id, :item_condition_id, :delivery_charge_id, :prefecture_id, :delivery_date_id, :item_price).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :item_name, :item_text, :category_id, :item_condition_id, :delivery_charge_id, :prefecture_id, :delivery_date_id, :item_price).merge(user_id: current_user.id)
   end
 
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   def move_to_index
     unless user_signed_in?

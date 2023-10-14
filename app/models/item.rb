@@ -3,7 +3,6 @@ extend ActiveHash::Associations::ActiveRecordExtensions
 
     # テーブルとのアソシエーション
     belongs_to :user
-    belongs_to :category
     # has_one    :order
     # has_many   :comments
     # has_one    :shipping
@@ -28,7 +27,7 @@ extend ActiveHash::Associations::ActiveRecordExtensions
     validates :prefecture_id, presence: true
     validates :delivery_date_id, presence: true
     # 300円以上かつ9,999,999円以下で、半角数字でないと入力不可
-    validates :item_price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+    validates :item_price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   
   #ジャンルの選択が「---」の時は保存できないようにする
     validates :category_id, numericality: { other_than: 0 , message: "can't be blank"}

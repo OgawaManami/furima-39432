@@ -9,7 +9,6 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @category_parent = Category.where(ancestry: nil)
   end
 
   def create

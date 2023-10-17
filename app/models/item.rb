@@ -4,8 +4,6 @@ extend ActiveHash::Associations::ActiveRecordExtensions
     # テーブルとのアソシエーション
     belongs_to :user
     # has_one    :order
-    # has_many   :comments
-    # has_one    :shipping
 
       # active_storageとのアソシエーション
     has_one_attached :image

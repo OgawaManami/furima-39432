@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :index
   before_action :non_purchased_item, only: [:index, :create]
 
   def index
@@ -7,19 +7,15 @@ class OrdersController < ApplicationController
     @order_form = OrderForm.new
   end
 
-  def new
-    @order_form = OrderForm.new
-  end
-
   def create
     @order_form = OrderForm.new(order_params)
     if @order_form.valid?
-      pay_item
+      #pay_item
       @order_form.save
-      return redirect_to root_path
+      redirect_to root_path
     else
-      gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-      render 'index', status: :unprocessable_entity
+      #gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
+      render :index, status: :unprocessable_entity
     end
   end
 

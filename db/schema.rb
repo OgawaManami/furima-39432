@@ -67,11 +67,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_21_092426) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
-  create_table "order_forms", charset: "utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "orders", charset: "utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "item_id", null: false

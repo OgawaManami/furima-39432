@@ -7,12 +7,13 @@ class OrdersController < ApplicationController
     @order_form = OrderForm.new
   end
 
+  def show
+  end
+
   def create
     @order_form = OrderForm.new(order_params)
-    if @order_form.valid?
-      pay_item
-      @order_form.save
-      return redirect_to root_path
+    if @order_form.save
+      redirect_to root_path
     else
       gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
       render 'index', status: :unprocessable_entity
@@ -36,6 +37,7 @@ class OrdersController < ApplicationController
 
   def non_purchased_item
     @item = Item.find(params[:item_id])
+    redirect_to root_path if current_user.id == @item.user_id || @item.order.present?
   end
 
 end

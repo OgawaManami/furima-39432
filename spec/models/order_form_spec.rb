@@ -90,6 +90,19 @@ RSpec.describe OrderForm, type: :model do
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include("Tel can't be blank")
       end
+      
+      it '電話番号が9桁以下だと保存できないこと' do
+        @order_form.tel = '090123456'
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include("Tel is invalid")
+      end
+
+      it '電話番号が12桁以上だと保存できないこと' do
+        @order_form.tel = '090123456789'
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include("Tel is invalid")
+      end
+
       it '電話番号にハイフンがあると保存できないこと' do
         @order_form.tel = '123 - 1234 - 1234'
         @order_form.valid?

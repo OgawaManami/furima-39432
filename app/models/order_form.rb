@@ -9,7 +9,7 @@ class OrderForm
     validates :prefecture_id, numericality: { other_than: 0}
     validates :city
     validates :street
-    validates :tel, format: { with: /\A[0-9]+{11}\z/}
+    validates :tel, format: { with: /\A\d{10,11}\z/}
     validates :token
   end
 

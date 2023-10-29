@@ -7,9 +7,6 @@ class OrdersController < ApplicationController
     @order_form = OrderForm.new
   end
 
-  def show
-  end
-
   def create
     @order_form = OrderForm.new(order_params)
     if @order_form.save

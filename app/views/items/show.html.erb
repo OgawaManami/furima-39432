@@ -31,7 +31,7 @@
       <%= link_to '削除', item_path(@item), data: { turbo_method: :delete }, class:'item-destroy' %>
     <% elsif @item.order.nil? %>
     <%# 出品者以外かつ未購入品であれば、購入画面を表示 %>
-    <%= link_to "購入画面に進む", item_orders_path(@item),data: { turbo: false } ,class:"item-red-btn"%>
+    <%= link_to "購入画面に進む", item_orders_path(@item), data: { turbo: false }, class:"item-red-btn"%>
     
     <% end %>
   <% end %>

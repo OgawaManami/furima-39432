@@ -6,7 +6,7 @@ extend ActiveHash::Associations::ActiveRecordExtensions
     has_one    :order
 
       # active_storageとのアソシエーション
-    has_one_attached :image
+      has_many_attached :images
 
     # アクティブハッシュとのアソシエーション
     belongs_to :category
@@ -15,7 +15,7 @@ extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to :delivery_charge
     belongs_to :delivery_date
 
-    validates :image, presence: true
+    validates :images, length: { minimum: 1, maximum: 5, message: "は1枚以上5枚以下にしてください" }
     validates :item_name, presence: true
     validates :item_price, presence: true
     validates :item_text, presence: true
